@@ -42,9 +42,7 @@ const flattenArray = (data) => {
     
 
     let newArray = [];
-    // if (!Array.isArray(data)) {
-         
-    // }
+
     for (const key in data) {
         if (!Array.isArray(data[key])) { //Si la data no es un array entonces es un primitivo y se agrega al array de forma directa
             newArray.push(data[key])
