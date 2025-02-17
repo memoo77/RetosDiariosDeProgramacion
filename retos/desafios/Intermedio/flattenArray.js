@@ -30,11 +30,16 @@ const nestedArray = [1,
                         [2, 
                             [3, 4], 
                         5], 
-                            [6, [7]],
+                            [6, [,7]
+                        ],
                      8];
 
             
-const nestedArray2 = [1, ['hello', [2, 'world']], 3];
+const nestedArray2 = [1, 
+                        ['hello', 
+                            [2, 'world']
+                        ]
+                    , 3];
 
 
 const flattenArray = (data) => {
@@ -43,12 +48,22 @@ const flattenArray = (data) => {
 
     let newArray = [];
 
-    for (const key in data) {
-        if (!Array.isArray(data[key])) { //Si la data no es un array entonces es un primitivo y se agrega al array de forma directa
-            newArray.push(data[key])
-        } else {
+    // for (const key in data) { //este for in recorre indices y dado que solo es un arreglo común basta con un for of que recorre elementos.
+    //     if (!Array.isArray(data[key])) { //Si la data no es un array entonces es un primitivo y se agrega al array de forma directa
+    //         newArray.push(data[key])
+    //     } else {
 
-            newArray = newArray.concat(flattenArray(data[key])) //Si es un array se debe realizar recursividad para que el valor que es un array se pueda descomponer en un primitivo.
+    //         newArray = newArray.concat(flattenArray(data[key])) //Si es un array se debe realizar recursividad para que el valor que es un array se pueda descomponer en un primitivo.
+    //     }
+    // }
+
+    for (const element of data) {
+        if (typeof(element) === 'undefined') return 
+        if (!Array.isArray(element)) {
+            newArray.push(element);
+            
+        } else {
+            newArray = newArray.concat(flattenArray(element))
         }
     }
     return newArray;
@@ -56,7 +71,7 @@ const flattenArray = (data) => {
 
 
 
-const result = flattenArray(nestedArray2);
+const result = flattenArray(nestedArray);
 console.log({result});
 
 
