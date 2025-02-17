@@ -22,3 +22,36 @@ console.log(countVowels("BCDFG")); // 0
 
 Cuando tengas tu solución, revísala bien y envíamela para análisis y mentoría. ¡Buena suerte! 🚀*/
 
+
+const countVowels = (data) => {
+    const vowels = new Set(["a", "e", "i", "o", "u"]);
+
+    //Valida si data no sea null, undefined ni distinto de un string.
+    if (!data || typeof(data) != 'string' ) {
+        return `{${data}} no es válido. Se esperaba una cadena.`
+    }
+
+    
+    const toArrayCharacters = data.toLowerCase().split("");
+    let counter = 0;
+    toArrayCharacters.forEach(vowel => {
+        if (vowels.has(vowel)) counter ++ }
+        
+    );
+
+
+   return counter;
+    
+
+};
+
+
+
+
+console.log(countVowels("Hola Mundo")); // 4
+console.log(countVowels("JavaScript")); // 3
+console.log(countVowels("BCDFG")); // 0
+console.log(countVowels(3)); // 0
+console.log(countVowels(undefined)); // 0
+console.log(countVowels(null)); // 0
+console.log(countVowels("erfrERfs$as_r31123asd2sdfr3aacroepalmzaqiekmfjdiqEDiEE!cjcns/*qs!2"));

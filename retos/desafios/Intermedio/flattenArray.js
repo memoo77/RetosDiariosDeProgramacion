@@ -30,7 +30,7 @@ const nestedArray = [1,
                         [2, 
                             [3, 4], 
                         5], 
-                            [6, [,7]
+                            [6, [ ,7]
                         ],
                      8];
 
@@ -58,7 +58,9 @@ const flattenArray = (data) => {
     // }
 
     for (const element of data) {
-        if (typeof(element) === 'undefined') return 
+        console.log(typeof(element), element);
+        
+        // if (element === null | element === undefined) return "hola"
         if (!Array.isArray(element)) {
             newArray.push(element);
             
@@ -66,6 +68,7 @@ const flattenArray = (data) => {
             newArray = newArray.concat(flattenArray(element))
         }
     }
+
     return newArray;
 }
 
